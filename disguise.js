@@ -123,6 +123,16 @@ instance.prototype.actions = function(system) {
 				regex: self.REGEX_NUMBER
 			}]
 		},
+				'float_cue': {
+			label: 'Float Cue',
+			options: [{
+				type: 'textinput',
+				label: 'Float Cue',
+				id: 'float_cue',
+				default: '0',
+				regex: self.REGEX_NUMBER
+			}]
+		},
 		'fade_up': { label: 'Fade up' },
 		'fade_down': { label: 'Fade down' },
 		'hold': { label: 'Hold' },
@@ -240,6 +250,15 @@ instance.prototype.action = function(action) {
 			arg = {
 				type: "i",
 				value: opt.cue
+			};
+			self.sendArg(cmd,arg);
+			break;
+			
+		case 'float_cue':
+			cmd = '/d3/showcontrol/floatcue';
+			arg = {
+				type: "f",
+				value: opt.float_cue
 			};
 			self.sendArg(cmd,arg);
 			break;
